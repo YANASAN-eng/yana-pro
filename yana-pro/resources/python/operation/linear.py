@@ -11,8 +11,8 @@ def unit(n):
                 E[i][j] = 0
     return E
 
-# LD分解
-def LD(A):
+# LU分解
+def LU(A):
     row = len(A)
     col = len(A[0])
     L = np.zeros((row, col))
@@ -37,7 +37,7 @@ def LD(A):
 
 # 行列式
 def det(A):
-    L = LD(A)[0]
+    L = LU(A)[0]
     d = 1
     for i in range(len(A)):
         d = d * L[i][i]
@@ -75,8 +75,8 @@ def inverseTriangle(T):
     return inv
 # 逆行列を求める
 def inverse(A):
-    L = LD(A)[0]
-    U = LD(A)[1]
+    L = LU(A)[0]
+    U = LU(A)[1]
     temp = transpose(U)
     invL = inverseTriangle(L)
     invTemp = inverseTriangle(temp)
